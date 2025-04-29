@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Futuristic Portfolio</title>
-  <!-- Note: cdn.tailwindcss.com is used here for development. For production, install Tailwind CSS as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
@@ -27,42 +26,26 @@
       backdrop-filter: blur(15px);
       border: 1px solid rgba(255, 255, 255, 0.15);
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-      transition: transform 0.7s ease-in-out, box-shadow 0.7s ease-in-out, scale 0.5s ease-in-out; /* Smoother transitions */
+      transition: transform 0.7s ease-in-out, box-shadow 0.7s ease-in-out, scale 0.5s ease-in-out;
       transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
       border-radius: 0;
-      /* Updated animations with smoother timing */
       animation: scaleFadeIn 1.2s ease-in-out forwards, pulse 2s ease-in-out 1s forwards, float 4s ease-in-out infinite;
     }
     .glass:hover {
       transform: perspective(1000px) rotateX(2deg) rotateY(2deg) translateY(-8px) scale(1.05) rotateZ(5deg);
       box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
     }
-    /* Smoother animations */
     @keyframes scaleFadeIn {
-      0% {
-        transform: scale(0.85); /* Slightly larger starting scale for smoother effect */
-        opacity: 0;
-      }
-      100% {
-        transform: scale(1);
-        opacity: 1;
-      }
+      0% { transform: scale(0.85); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
     }
     @keyframes pulse {
-      0%, 100% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.03); /* Reduced scale for smoother pulse */
-      }
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
     }
     @keyframes float {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-8px); /* Slightly reduced float distance */
-      }
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
     }
     .input-field {
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -210,6 +193,16 @@
       margin: 0 auto 1rem auto;
       display: block;
     }
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      padding: 20px;
+    }
+    .project-card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    }
     @media (max-width: 768px) {
       .nav-actions {
         width: auto;
@@ -303,7 +296,8 @@
         <ul id="menu" class="flex">
           <li data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"><a href="#home" class="nav-link text-gray-200 hover:text-purple-400 font-medium transition duration-300">Home</a></li>
           <li data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300"><a href="#about" class="nav-link text-gray-200 hover:text-purple-400 font-medium transition duration-300">About</a></li>
-          <li data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500"><a href="#contact" class="nav-link text-gray-200 hover:text-purple-400 font-medium transition duration-300">Contact</a></li>
+          <li data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500"><a href="#projects" class="nav-link text-gray-200 hover:text-purple-400 font-medium transition duration-300">Projects</a></li>
+          <li data-aos="fade-up" data-aos-duration="1000" data-aos-delay="700"><a href="#contact" class="nav-link text-gray-200 hover:text-purple-400 font-medium transition duration-300">Contact</a></li>
           <li class="fullscreen-btn-menu"><button id="fullscreen-btn-menu" class="fullscreen-btn" title="Toggle Fullscreen"><span>⬜</span></button></li>
         </ul>
         <button id="fullscreen-btn-nav" class="fullscreen-btn fullscreen-btn-nav" title="Toggle Fullscreen">
@@ -347,6 +341,30 @@
     </div>
   </section>
 
+  <!-- Projects Section -->
+  <section id="projects" class="py-20 sm:py-28 bg-gradient-to-b from-gray-950 to-gray-900">
+    <div class="container mx-auto px-4 sm:px-6">
+      <h2 class="text-4xl sm:text-5xl font-bold text-center mb-12 sm:mb-16 text-white" data-aos="fade-up" data-aos-duration="1000">My Projects</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12 max-w-6xl mx-auto">
+        <!-- Project Card 1: Movie App -->
+        <div class="project-card glass p-6" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+          <h3 class="text-xl sm:text-2xl font-semibold text-white mb-2">Movie Streaming App</h3>
+          <p class="text-gray-300">A dynamic app featuring movie listings, trending sections, and OTT platform integrations with smooth animations.</p>
+        </div>
+        <!-- Project Card 2: E-Commerce Platform -->
+        <div class="project-card glass p-6" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+          <h3 class="text-xl sm:text-2xl font-semibold text-white mb-2">E-Commerce Store</h3>
+          <p class="text-gray-300">An interactive store with animated buttons, product cards, and a cart system built with modern CSS techniques.</p>
+        </div>
+        <!-- Project Card 3: Course Platform -->
+        <div class="project-card glass p-6" data-aos="fade-up" data-aos-duration="800" data-aos-delay="600">
+          <h3 class="text-xl sm:text-2xl font-semibold text-white mb-2">Online Course App</h3>
+          <p class="text-gray-300">A sleek course platform with a dark/light mode toggle and responsive navigation for an immersive learning experience.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Contact Section -->
   <section id="contact" class="py-20 sm:py-28 bg-gradient-to-b from-gray-950 to-gray-900">
     <div class="container mx-auto px-4 sm:px-6">
@@ -384,7 +402,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script>
-    // Initialize AOS
     AOS.init({
       once: true,
       offset: 120,
@@ -392,12 +409,10 @@
       duration: 1200,
     });
 
-    // Initialize EmailJS with your provided Public Key
     (function() {
       emailjs.init("yIIS7mX-ioJAShWBN");
     })();
 
-    // WebGL Background (Three.js)
     const initWebGL = () => {
       const canvas = document.getElementById('webgl-bg');
       if (!canvas) return;
@@ -438,7 +453,6 @@
       });
     };
 
-    // Fallback if WebGL is not supported or fails
     const canvas = document.getElementById('webgl-bg');
     if (canvas && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'))) {
       window.addEventListener('load', initWebGL);
@@ -447,7 +461,6 @@
       canvas.style.zIndex = '-1';
     }
 
-    // Cursor trail effect (disable on mobile for performance)
     if (window.innerWidth > 768) {
       const cursorTrail = document.createElement('div');
       cursorTrail.classList.add('cursor-trail');
@@ -464,7 +477,6 @@
       });
     }
 
-    // Scroll-triggered section animations
     const sections = document.querySelectorAll('section');
     const observer = new IntersectionObserver(
       (entries) => {
@@ -479,7 +491,6 @@
     );
     sections.forEach((section) => observer.observe(section));
 
-    // Form submission with EmailJS
     let isSubmitting = false;
     async function submitForm() {
       if (isSubmitting) return;
@@ -489,6 +500,8 @@
       const name = document.getElementById('name').value.trim();
       const email = document.getElementById('email').value.trim();
       const message = document.getElementById('message').value.trim();
+
+      console.log('Form Data:', { from_name: name, from_email: email, message: message });
 
       if (!name || !email || !message) {
         alert('Please complete all fields.');
@@ -503,6 +516,7 @@
         const response = await emailjs.send('service_jqyuztj', 'template_y1ipa5o', {
           from_name: name,
           from_email: email,
+          reply_to: email,
           message: message,
           title: "Portfolio Contact Form",
         });
@@ -534,7 +548,6 @@
       }
     }
 
-    // Fullscreen toggle functionality for both buttons (nav and menu)
     const fullscreenBtnNav = document.getElementById('fullscreen-btn-nav');
     const fullscreenBtnMenu = document.getElementById('fullscreen-btn-menu');
 
